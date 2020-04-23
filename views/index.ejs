@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div class="search-box">
+		<form class="search-form" action="" method="post">
+			<span>查询条件：</span>
+			<input class="search-name" type="text" name="bookName" placeholder="请输入图书名称"/>
+			<select class="search-type" name="bookType">
+				<option value="0">全部</option>
+				<option value="1">计算机</option>
+				<option value="2">科普</option>
+			</select>
+			<input class="search-btn" type="submit" value="搜索">
+		</form>
+		<a class="add-btn" href="/toAddBook">添加图书</a>
+	</div>
+	<div class="container">
+		<table class="data-table" border="1" id="tb-books">
+			<thead>
+				<tr>
+					<th>编号</th>
+					<th>图书名称</th>
+					<th>作者</th>
+					<th>出版社</th>
+					<th>图书类别</th>
+					<th>图书描述</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% list.forEach(function(item){ %>					<tr>						<td><%= item.id %></td>						<td><%= item.name %></td>						<td><%= item.author %></td>						<td><%= item.publish %></td>						<td><% if (item.category==1) { %> 计算机 <% }  else { %> 科普 <% } %></td>						<td><%= item.desc %></td>						<td>							<a class="upda" href="">编辑</a>							<a class="del" href="">删除</a>						</td>					</tr>				<% }); %>
+			</tbody>
+		</table>
+	</div>
+  </body>
+</html>
+
